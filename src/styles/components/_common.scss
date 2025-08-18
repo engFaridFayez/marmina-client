@@ -1,0 +1,19 @@
+.container {
+  width: 100%;
+  display: inline-block;
+
+  >.navigation-bar {
+    background-color: aqua;
+
+    >nav ul h1 {
+      color: aquamarine;
+    }
+  }
+
+}
+
+.navigation-bar { outline: 4px solid red; }
+
+.lol {
+  font-size: 500px;
+}
