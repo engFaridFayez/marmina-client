@@ -1,6 +1,9 @@
 <template>
-  <div>
+  <div class="header">
     <NavBar />
+  </div>
+  <div class="carousel">
+    <Carousel />
   </div>
   <div>
     <h1>مراحل مدرسة الشمامسة</h1>
@@ -15,11 +18,13 @@
 import { defineComponent, onMounted, ref } from 'vue';
 import { loadStages } from '@/api/stages';
 import NavBar from '@/components/common/NavBar.vue';
+import Carousel from '@/components/Home/Carousel.vue';
 
 export default defineComponent({
 
   components: {
-    NavBar
+    NavBar,
+    Carousel
   },
 
   setup (){

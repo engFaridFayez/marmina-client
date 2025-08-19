@@ -8,7 +8,7 @@
                 <a href="#" class="nav-link text-white"><i class="bi bi-globe-americas"></i></a>
                 <a href="#" class="nav-link text-white"><i class="bi bi-person-circle"></i></a>
             </div>
-            <button class="navbar-toggler order-first"
+            <button class="navbar-toggler order-last"
         type="button"
         data-bs-toggle="collapse"
         data-bs-target="#navbarNav"
@@ -45,7 +45,6 @@
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
-import * as bootstrap from 'bootstrap';
 
 export default defineComponent({
 
