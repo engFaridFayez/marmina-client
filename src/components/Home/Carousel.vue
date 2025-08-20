@@ -8,19 +8,19 @@
   <div class="carousel-inner">
     <div class="carousel-item active" data-bs-interval="10000">
       <img src="../../assets/img1.jpg" height="700px" class="d-block w-100" alt="">
-      <div class="carousel-caption d-none d-md-block">
+      <div class="carousel-caption ">
         <h5>مرحباً بكم في مدرسة الشمامسة</h5>
       </div>
     </div>
     <div class="carousel-item" data-bs-interval="2000">
       <img src="../../assets/img2.jpg" height="700px" class="d-block w-100" alt="">
-      <div class="carousel-caption d-none d-md-block">
+      <div class="carousel-caption">
         <h5>كُلُّ نَسَمَةٍ فَلْتُسَبِّحِ ٱلرَّبَّ. هَلِّلُويَا</h5>
       </div>
     </div>
     <div class="carousel-item">
       <img src="../../assets/img3.jpg" height="700px" class="d-block w-100" alt="">
-      <div class="carousel-caption d-none d-md-block">
+      <div class="carousel-caption">
         <h5>تنشئة روحية وليتروجيه للأجيال الجديدة</h5>
       </div>
     </div>
@@ -43,7 +43,9 @@ export default defineComponent({
 })
 </script>
 <style>
-.carousel-caption {
+
+@media (max-width: 1920px){
+  .carousel-caption {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -51,11 +53,26 @@ export default defineComponent({
   text-align: center; /* يضمن إن الكلام يفضل في النص */
 
 }
-
-.carousel-caption h5,p {
+    .carousel-caption h5,p {
     color: white;
     font-size: 100px;
     font-weight: 900;
+}
+}
+
+@media (max-width: 768px){
+  .carousel-caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center; /* يضمن إن الكلام يفضل في النص */
+  }
+    .carousel-caption h5,p {
+    color: white;
+    font-size: 70px;
+    font-weight: 900;
+}
 }
 
 </style>

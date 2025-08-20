@@ -3,10 +3,10 @@
         <div class="row">
             <div class="col-12">
                 <div class="row body-content">
-                    <div class="col-12 col-md-12 col-lg-6">
-                        <img class="img-content" src="../../assets/logo.png" width="300px" height="300px" alt="">
+                    <div class="col-12 col-md-6 col-lg-6">
+                        <img class="imgContent" src="../../assets/logo.png" alt="">
                     </div>
-                    <div class="col-12 col-md-12 col-lg-6 content">
+                    <div class="col-12 col-md-6 col-lg-6 content">
                         <h2>عن مدرسة الشمامسة</h2>
                         <h5>مدرسة الشمامسة بكنيسة الملاك الجليل سوريال والشهيد العظيم مارمينا - بالعمرانية </h5>
                         <ul>
@@ -16,11 +16,9 @@
                         <br>
                         <h2>هدف خدمة الشمامسة</h2>
                         <h5>اعداد جيل كنسي قوي مهتم بالليتروجيا والصلوات الكنسية ومواظب علي حضور القداسات <br>وحفظ الالحان القبطية وفهم الطقوس واجادة <br>اللغهة القبطية بالاضافه الي بعض الحقائق والعقائد الايمانية</h5>
-                        
                     </div>
                 </div>
             </div>
-            
         </div>
     </div>
     <div class="news">
@@ -104,6 +102,107 @@ export default defineComponent ({
     
 })
 </script>
-<style>
+<style lang="scss" scoped>
+    @media (max-width:1920px) {
+        .body-content {
+        background-color: $color-2;
+        }
+        .content {
+        display: flex;
+        flex-direction: column;
+        direction: rtl;
+        margin-left: -180px;
+        padding: 15px;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        h2{
+            color: $color-1;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: 900;
+        }
+    }
+        .imgContent {
+            width:300px;
+            height:300px;
+            margin: 60px;
+            margin-left: 120px;
+        }
+    }
+    @media(max-width:1070px){
+        .content {
+        display: flex;
+        flex-direction: column;
+        direction: rtl;
+        margin-left: -90px;
+        padding: 15px;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        h2{
+            color: $color-1;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: 900;
+        }
+    }
+    .imgContent {
+            width:300px;
+            height:300px;
+            margin: 60px;
+            margin-left: 90px;
+        }
+    }
+    @media(max-width:991px){
+        .content {
+        display: flex;
+        flex-direction: column;
+        direction: rtl;
+        margin-left: -90px;
+        padding: 15px;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        h2{
+            color: $color-1;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: 900;
+        }
+    }
+    .imgContent {
+            width:300px;
+            height:300px;
+            margin: 90px;
+            margin-left: 50px;
+        }
+    }
+    @media(max-width:768px){
+        .content {
+        display: flex;
+        flex-direction: column;
+        direction: rtl;
+        margin-left: -1px;
+        padding: 15px;
+
+        h2{
+            color: $color-1;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: 900;
+            text-align: center;
+        }
+        h5 {
+            text-align: center;
+        }
+        ul{
+            text-align: center;
+            list-style-position: inside;
+        }
+    }
+    .imgContent {
+            width:100%;
+            height:100%;
+            text-align: center;
+            margin: 0;
+            
+        }
+    }
+
+
     
 </style>
