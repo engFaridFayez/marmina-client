@@ -5,6 +5,9 @@
   <div class="carousel">
     <Carousel />
   </div>
+  <div class="body">
+    <BodyContent />
+  </div>
   <div>
     <h1>مراحل مدرسة الشمامسة</h1>
     <ol v-for="stage in stages">
@@ -19,12 +22,14 @@ import { defineComponent, onMounted, ref } from 'vue';
 import { loadStages } from '@/api/stages';
 import NavBar from '@/components/common/NavBar.vue';
 import Carousel from '@/components/Home/Carousel.vue';
+import BodyContent from '@/components/Home/BodyContent.vue';
 
 export default defineComponent({
 
   components: {
     NavBar,
-    Carousel
+    Carousel,
+    BodyContent
   },
 
   setup (){

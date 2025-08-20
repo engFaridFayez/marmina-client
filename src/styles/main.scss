@@ -2,5 +2,6 @@
 @import "theme.scss";
 
 @import "components/navbar.scss";
-@import "components/carousel.scss";
-@import "components/common.scss"; // ده هيجيب الـnavbar وغيره
+@import "components/home/carousel.scss";
+@import "components/common.scss"; 
+@import "components/home//bodyContent.scss"

@@ -7,19 +7,19 @@
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active" data-bs-interval="10000">
-      <img src="../../assets/img1.jpg" height="800px" class="d-block w-100" alt="">
+      <img src="../../assets/img1.jpg" height="700px" class="d-block w-100" alt="">
       <div class="carousel-caption d-none d-md-block">
         <h5>مرحباً بكم في مدرسة الشمامسة</h5>
       </div>
     </div>
     <div class="carousel-item" data-bs-interval="2000">
-      <img src="../../assets/img2.jpg" height="800px" class="d-block w-100" alt="">
+      <img src="../../assets/img2.jpg" height="700px" class="d-block w-100" alt="">
       <div class="carousel-caption d-none d-md-block">
         <h5>كُلُّ نَسَمَةٍ فَلْتُسَبِّحِ ٱلرَّبَّ. هَلِّلُويَا</h5>
       </div>
     </div>
     <div class="carousel-item">
-      <img src="../../assets/img3.jpg" height="800px" class="d-block w-100" alt="">
+      <img src="../../assets/img3.jpg" height="700px" class="d-block w-100" alt="">
       <div class="carousel-caption d-none d-md-block">
         <h5>تنشئة روحية وليتروجيه للأجيال الجديدة</h5>
       </div>
