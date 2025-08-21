@@ -9,12 +9,14 @@
     <BodyContent />
   </div>
   <div>
-    <h1>مراحل مدرسة الشمامسة</h1>
-    <ol v-for="stage in stages">
-      {{ stage.name }}
-    </ol>
-    <h1 class="lol">API Called successfully</h1>
+    <Manahg />
   </div>
+  <div>
+    <Contact />
+  </div>
+  <footer>
+    <Footer></Footer>
+  </footer>
 </template>
 
 <script lang="ts">
@@ -23,13 +25,19 @@ import { loadStages } from '@/api/stages';
 import NavBar from '@/components/common/NavBar.vue';
 import Carousel from '@/components/Home/Carousel.vue';
 import BodyContent from '@/components/Home/BodyContent.vue';
+import Manahg from '@/components/Home/Manahg.vue';
+import Contact from '@/components/Home/Contact.vue';
+import Footer from '@/components/Home/Footer.vue';
 
 export default defineComponent({
 
   components: {
     NavBar,
     Carousel,
-    BodyContent
+    BodyContent,
+    Manahg,
+    Contact,
+    Footer
   },
 
   setup (){
