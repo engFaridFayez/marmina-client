@@ -17,11 +17,23 @@
   <footer>
     <Footer></Footer>
   </footer>
+  <div>
+    <section>
+      <div v-for="family in families">
+          <h5>{{ family.name }}</h5>
+      </div>
+    </section>
+    <section>
+      <div v-for="stage in stages">
+          <h5>{{ stage.name }}</h5>
+      </div>
+    </section>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, onMounted, ref } from 'vue';
-import { loadStages } from '@/api/stages';
+import { loadFamilies, loadStages } from '@/api/stages';
 import NavBar from '@/components/common/NavBar.vue';
 import Carousel from '@/components/Home/Carousel.vue';
 import BodyContent from '@/components/Home/BodyContent.vue';
@@ -42,6 +54,7 @@ export default defineComponent({
 
   setup (){
     const stages = ref()
+    const families = ref()
 
     const getStages = async () => {
       console.log('calling stages');
@@ -56,12 +69,25 @@ export default defineComponent({
       
     }
 
+    const getFamilies = async ()=> {
+      try {
+        families.value = await loadFamilies()
+      } catch (error) {
+        console.log('Failed',error);
+        
+      }
+
+    }
+
     onMounted(() => {
-      getStages()
+      getStages(),
+      getFamilies()
     })
 
     return {
-      stages
+      stages,
+      families
+
     }
   }
 });

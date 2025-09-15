@@ -9,3 +9,14 @@ export const loadStages = () => {
         
     })
 }
+
+export const loadFamilies = () => {
+    return axios.get('http://127.0.0.1:8000/api/families/')
+    .then((response:AxiosResponse) => {
+        console.log(response.data);
+
+        return response.data
+        
+    })
+}
+
