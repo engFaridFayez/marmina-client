@@ -17,6 +17,16 @@
   <footer>
     <Footer></Footer>
   </footer>
+  <section>
+    <router-link v-if="isAdmin" :to="{name: 'administration'}">
+      Administration
+    </router-link>
+  </section>
+  <section>
+    <router-link :to="{name: 'users'}">
+      Users
+    </router-link>
+  </section>
   <div>
     <section>
       <div v-for="family in families">
@@ -29,10 +39,17 @@
       </div>
     </section>
   </div>
+  <div>
+    <section class="logout">
+      <a @click.prevent="logout">
+        <span>Logout {{ loggedUser}}</span>
+      </a>
+    </section>
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref } from 'vue';
+import { computed, defineComponent, onMounted, ref } from 'vue';
 import { loadFamilies, loadStages } from '@/api/stages';
 import NavBar from '@/components/common/NavBar.vue';
 import Carousel from '@/components/Home/Carousel.vue';
@@ -40,6 +57,8 @@ import BodyContent from '@/components/Home/BodyContent.vue';
 import Manahg from '@/components/Home/Manahg.vue';
 import Contact from '@/components/Home/Contact.vue';
 import Footer from '@/components/Home/Footer.vue';
+import { get as getFromStore,remove as removeFromStore } from '@/localStorage';
+import router from '@/router';
 
 export default defineComponent({
 
@@ -56,17 +75,25 @@ export default defineComponent({
     const stages = ref()
     const families = ref()
 
+    const loggedUser = computed(()=>getFromStore('logged.username') || 'Not logged')
+
+    const isAdmin = computed(()=> getFromStore('logged.isAdmin'))
+
     const getStages = async () => {
-      console.log('calling stages');
       try {
         stages.value = await loadStages()
-        console.log('Stages loaded successfully',stages.value);
         
       } catch (error) {
-        console.log('Failed',error);
         
       }
       
+    }
+
+    const logout = ()=>{
+      removeFromStore('logged');
+      router.push({
+        name:'home'
+      })
     }
 
     const getFamilies = async ()=> {
@@ -86,7 +113,10 @@ export default defineComponent({
 
     return {
       stages,
-      families
+      families,
+      isAdmin,
+      loggedUser,
+      logout
 
     }
   }

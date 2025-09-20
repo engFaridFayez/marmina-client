@@ -3,34 +3,49 @@
         <form @submit.prevent="login" autocomplete="off">
             <p class="login-title">Login</p>
             <div class="input">
-                <label for="login_username">Username</label>
-                <input type="text" placeholder="Username" />
+                <label  for="login_username">Username</label>
+                <input v-model="input.username" type="text" placeholder="Username" />
             </div>
             <div class="input">
-                <label for="login_password">Password</label>
-                <input type="password" placeholder="Password" />
+                <label  for="login_password">Password</label>
+                <input v-model="input.password" type="password" placeholder="Password" />
             </div>
-            <button class="button">
+            <button class="button" :disabled="!isValid">
                 Login
             </button>
         </form>
     </div>
 </template>
 <script lang="ts">
-import { defineComponent, warn } from 'vue';
+import { computed, defineComponent, ref, warn } from 'vue';
 import { authenticate } from '@/api/admin/users';
 import { ILoginCredentials } from '@/models/ILoginCredentials';
 import { save as saveToStore } from '@/localStorage';
+import router from '@/router';
 
 export default defineComponent({
     components:{},
 
 
     setup() {
+
+        const input = ref({
+            username:"",
+            password:""
+        })
+
+        const isValid = computed(()=>{
+            return Object.values(input.value).every(Boolean);
+        })
+
         const login = async () => {
+
+            const {username,password} = input.value;
+
+
             const body: ILoginCredentials = {
-                username: "farid",
-                password: "Trumpet_1"
+                username,
+                password
             }
 
             let response = await authenticate(body);
@@ -44,11 +59,16 @@ export default defineComponent({
                     isAdmin:response.data.is_admin,
                     access_token:response.data.access,
                     requiresReset: response.data.requires_reset
+                });
+                router.push({
+                    name:'users'
                 })
             }
         }
         return {
             login,
+            input,
+            isValid
         };
     },
 });
@@ -115,6 +135,17 @@ export default defineComponent({
                 padding: 16px 24px;
                 border-radius: 8px;
                 background-color: #2C3040;
+            }
+
+            button[disabled] {
+                cursor: auto;
+                opacity: .6;
+                border: none;
+            }
+
+            button[disabled]:hover{
+                background: transparent;
+                color: transparent;
             }
         }
         
