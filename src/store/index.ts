@@ -1,4 +1,5 @@
 import { createStore } from 'vuex'
+import administraionManagement from './administrationManagement'
 
 export default createStore({
   state: {
