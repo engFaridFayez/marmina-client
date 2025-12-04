@@ -7,7 +7,7 @@ const URLS = {
 
 export const getUsers = () => {
     return new Promise((resolve,reject)=>{
-        api.get(URLS.users, {})
+        api.get(URLS.users)
         .then((response:AxiosResponse)=>{
             if(response.status===200) {
                 resolve(response.data);
