@@ -4,5 +4,7 @@ export interface ILoginData {
     isAdmin:boolean;
     requiresReset:boolean;
     username:string;
+    first_name:string;
+    last_name:string;
     id:string;
 }

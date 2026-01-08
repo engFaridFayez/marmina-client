@@ -1,13 +1,26 @@
 <template>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
     <div class="default-layout">
-        <nav class="navbar navbar-expand-lg">
-            <div class="nav-left-links order-first ">
-                <a href="#" class="nav-link text-white"><i class="bi bi-search"></i></a>
-                <a href="#" class="nav-link text-white"><i class="bi bi-globe-americas"></i></a>
-                <a href="#" class="nav-link text-white"><i class="bi bi-person-circle"></i></a>
-            </div>
+        <nav class="navbar navbar-expand-lg" :class="{'navbar-transparent':transparent}">
+    <div>
+    <section>
+      <div class="dropdown" @click.outside="open = false">
+  <button class="btn"  @click.stop="toggle">
+    Hello, {{ loggedUser }} &#x25BC;
+  </button>
+
+  <div class="dropdown-menu show" v-if="open">
+    <RouterLink to="/profile" class="dropdown-item" style="cursor: pointer;">
+      Profile <i class="bi bi-person-circle"></i>
+    </RouterLink>
+    <a class="dropdown-item" @click.prevent="logout" style="cursor: pointer;">
+      Logout <i class="bi bi-box-arrow-right"></i> 
+    </a>
+  </div>
+</div>
+        
+    </section>
+  </div>
             <button class="navbar-toggler order-last"
         type="button"
         data-bs-toggle="collapse"
@@ -23,16 +36,16 @@
                         <a class="nav-link active" aria-current="page" href="#">الصفحة الرئيسية</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">عن المدرسة</a>
+                        <RouterLink to="/about" class="nav-link" href="#">عن المدرسة</RouterLink>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">الأخبار</a>
+                        <RouterLink to="/news" class="nav-link" href="#">الأخبار</RouterLink>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">المناهج</a>
+                        <RouterLink to="/manahg" class="nav-link" href="#">المناهج</RouterLink>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">تواصل معنا</a>
+                        <RouterLink to="/contact" class="nav-link" href="#">تواصل معنا</RouterLink>
                     </li>
                 </ul>
             </div>
@@ -44,12 +57,77 @@
     </div>
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent,computed, onMounted, ref, onUnmounted  } from 'vue';
+import { get as getFromStore,remove as removeFromStore } from '@/localStorage';
+import { RouterLink, useRoute } from 'vue-router';
+import router from '@/router';
 
 export default defineComponent({
 
+  props:{
+    transparent:{
+      type:Boolean,
+      default:false
+    }
+  },
+  
+setup(props) {
+  const open = ref(false);
+
+    const toggle = () => {
+      open.value = !open.value;
+    };
+
+    const close = () => {
+      open.value = false;
+    };
+
+    onMounted(() => {
+      document.addEventListener('click', close);
+    });
+
+    onUnmounted(() => {
+      document.removeEventListener('click', close);
+    });
+
+    const isActiveLink = (routePath: any) =>{
+    const route = useRoute()
+    return route.path === routePath;
+}
+
+  const loggedUser = computed(
+    () => getFromStore('logged.first_name') || 'Not logged'
+  );
+
+  const logout = () => {
+    removeFromStore('logged');
+    router.push({ name: 'home' });
+  };
+
+  return {
+    open,
+    toggle,
+    loggedUser,
+    logout,
+    isActiveLink,
+    props
+  };
+}
+
 });
+
+
+
 </script>
+<!-- MDB -->
 <style lang="scss">
-    
+    .navbar-transparent {
+  background-color: transparent !important;
+  box-shadow: none;
+  position: absolute; /* يخلي الـ navbar فوق الصورة */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10; /* عشان يكون فوق كل العناصر */
+}
 </style>
