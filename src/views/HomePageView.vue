@@ -75,7 +75,7 @@ export default defineComponent({
     const stages = ref()
     const families = ref()
 
-    const loggedUser = computed(()=>getFromStore('logged.username') || 'Not logged')
+    const loggedUser = computed(()=>getFromStore('logged.first_name') || 'Not logged')
 
     const isAdmin = computed(()=> getFromStore('logged.isAdmin'))
 

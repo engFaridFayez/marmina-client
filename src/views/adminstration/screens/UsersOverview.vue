@@ -46,8 +46,13 @@ export default defineComponent({
 
         const store = useStore();
         onMounted(() => {
+<<<<<<< HEAD
         store.dispatch('administrationManagement/SetUsers');
     });
+=======
+            store.dispatch('administrationManagement/SetUsers');
+        });
+>>>>>>> 5bc6de5ebb4d710a44819918a06d7473ec2e529a
         const users = computed(() => {
             let data = store.getters['administrationManagement/getUsers'];
             if (!data) return

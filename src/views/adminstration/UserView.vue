@@ -1,19 +1,21 @@
 <template>
-    <h1>Hello User!!</h1>
+    <h1>Hello {{ user.first_name }}</h1>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { computed, defineComponent } from 'vue';
+import { get as getFromStore } from '@/localStorage';
 
 export default defineComponent({
-    components:{},
-    props:{},
-    emits:{},
 
-    setup(props,context) {
-        return {};
+
+    setup() {
+          const user = computed(() => getFromStore('logged'));
+
+      return { user };
     }
 });
+
 </script>
 
 <style lang="scss" scoped>

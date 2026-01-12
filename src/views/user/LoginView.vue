@@ -58,7 +58,9 @@ export default defineComponent({
                     username:response.data.username,
                     isAdmin:response.data.is_admin,
                     access_token:response.data.access,
-                    requiresReset: response.data.requires_reset
+                    requiresReset: response.data.requires_reset,
+                    first_name:response.data.first_name,
+                    last_name:response.data.last_name
                 });
                 router.push({
                     name:'users'
