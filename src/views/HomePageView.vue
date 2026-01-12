@@ -5,6 +5,10 @@
   <div class="carousel">
     <Carousel />
   </div>
+  <div class="audioList">
+    <AudioList />
+    <BottomPlayer />
+  </div>
   <div class="body">
     <BodyContent />
   </div>
@@ -59,6 +63,8 @@ import Contact from '@/components/Home/Contact.vue';
 import Footer from '@/components/Home/Footer.vue';
 import { get as getFromStore,remove as removeFromStore } from '@/localStorage';
 import router from '@/router';
+import AudioList from '@/components/alhan/AudioList.vue';
+import BottomPlayer from '@/components/alhan/BottomPlayer.vue';
 
 export default defineComponent({
 
@@ -68,7 +74,9 @@ export default defineComponent({
     BodyContent,
     Manahg,
     Contact,
-    Footer
+    Footer,
+    AudioList,
+    BottomPlayer
   },
 
   setup (){
