@@ -96,7 +96,7 @@ setup(props) {
 }
 
   const loggedUser = computed(
-    () => getFromStore('logged.first_name') || 'Not logged'
+    () => getFromStore('logged.first_name') || 'Admin'
   );
 
   const logout = () => {

@@ -14,6 +14,9 @@
                 Login
             </button>
         </form>
+        <p v-if="errorMessage" class="error">
+    {{ errorMessage }}
+</p>
     </div>
 </template>
 <script lang="ts">
@@ -38,44 +41,50 @@ export default defineComponent({
             return Object.values(input.value).every(Boolean);
         })
 
-        const login = async () => {
+        const errorMessage = ref('');
 
-            const {username,password} = input.value;
+const login = async () => {
+    errorMessage.value = '';
 
+    try {
+        const { username, password } = input.value;
 
-            const body: ILoginCredentials = {
-                username,
-                password
-            }
+        const body: ILoginCredentials = {
+            username,
+            password
+        };
 
-            let response = await authenticate(body);
+        const response = await authenticate(body);
 
-            if(!response) {
-                console.warn('error logging',response)
-            }else{
-                console.info('logging successfull',response);
-                saveToStore('logged',{
-                    username:response.data.username,
-                    isAdmin:response.data.is_admin,
-                    access_token:response.data.access,
-                    requiresReset: response.data.requires_reset,
-                    first_name:response.data.first_name,
-                    last_name:response.data.last_name
-                });
-                router.push({
-                    name:'users'
-                })
-            }
-        }
+        // نجاح
+        saveToStore('logged', {
+            username: response.data.username,
+            isAdmin: response.data.is_admin,
+            access_token: response.data.access,
+            requiresReset: response.data.requires_reset,
+            first_name: response.data.first_name,
+            last_name: response.data.last_name
+        });
+
+        router.push({ name: 'users' });
+
+    } catch (error: any) {
+        // فشل
+        errorMessage.value = 'Username or password is incorrect';
+        console.warn('Login failed', error);
+    }
+};
         return {
             login,
             input,
-            isValid
+            isValid,
+            errorMessage
         };
     },
 });
 </script>
 <style lang="scss">
+
     .login{
         background: #CD2A2B;
         background: linear-gradient(90deg,rgba(205, 42, 43, 1) 0%, rgba(139, 46, 42, 1) 52%);
@@ -151,6 +160,15 @@ export default defineComponent({
             }
         }
         
+        
     }
+      .error {
+    color: #ffdddd;
+    background: rgba(0,0,0,.2);
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 15px;
+    font-size: 14px;
+      }
 
 </style>
