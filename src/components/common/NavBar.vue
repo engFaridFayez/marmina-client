@@ -33,7 +33,7 @@
             <div class="nav-center-links collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">الصفحة الرئيسية</a>
+                        <RouterLink to="/" class="nav-link active" aria-current="page" href="#">الصفحة الرئيسية</RouterLink>
                     </li>
                     <li class="nav-item">
                         <RouterLink to="/about" class="nav-link" href="#">عن المدرسة</RouterLink>
