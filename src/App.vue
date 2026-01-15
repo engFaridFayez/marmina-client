@@ -10,7 +10,7 @@ import { get as getFromStore,load as loadFromStore } from './localStorage';
 
 export default defineComponent({
   components: {
-    LoginView
+    LoginView,
   },
   setup() {
     const logged = computed(()=>getFromStore('logged'));

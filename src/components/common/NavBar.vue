@@ -42,7 +42,7 @@
                         <RouterLink to="/news" class="nav-link" href="#">الأخبار</RouterLink>
                     </li>
                     <li class="nav-item">
-                        <RouterLink to="/manahg" class="nav-link" href="#">المناهج</RouterLink>
+                        <RouterLink to="/alhan" class="nav-link" href="#">المناهج</RouterLink>
                     </li>
                     <li class="nav-item">
                         <RouterLink to="/contact" class="nav-link" href="#">تواصل معنا</RouterLink>

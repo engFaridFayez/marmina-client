@@ -7,6 +7,8 @@ import AboutUsView from '@/views/stages/screens/AboutUsView.vue';
 import ContactUsView from '@/views/stages/screens/ContactUsView.vue';
 import ManahgView from '@/views/stages/screens/ManahgView.vue';
 import NewsView from '@/views/stages/screens/NewsView.vue';
+import AlhanTermsView from '@/views/stages/screens/AlhanTermsView.vue';
+import AlhanListView from '@/views/stages/screens/AlhanListView.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -51,9 +53,21 @@ const routes: Array<RouteRecordRaw> = [
     component:ContactUsView,
   },
   {
-    path:'/manahg',
-    name:'manahg',
+    path:'/alhan',
+    name:'alhan',
     component:ManahgView,
+  },
+  {
+    path: '/alhan/:familyId',
+    name: 'alhan-terms',
+    component: AlhanTermsView,
+    props: true
+  },
+  {
+    path: '/alhan/:familyId/:term',
+    name: 'alhan-list',
+    component: AlhanListView,
+    props: true
   },
   {
     path:'/news',

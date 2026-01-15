@@ -30,7 +30,12 @@
         <div class="card-body text-center">
           <h5 class="card-title" style="font-weight: 900; font-size: 30px;">{{ family.name }}</h5>
           <p class="card-text">{{ family.description }}</p>
-          <a href="#" class="btn btn-warning" style="color: black;font-weight: 900;font-size: 25px;border-radius: 30px;width: 200px;">عرض الالحان</a>
+          <router-link
+            :to="{ name: 'alhan-terms', params: { familyId: family.id } }"
+            class="btn btn-warning"
+            style="color: black;font-weight: 900;font-size: 25px;border-radius: 30px;width: 200px;">
+            عرض الالحان
+          </router-link>
         </div>
       </div>
     </div>
