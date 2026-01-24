@@ -5,10 +5,6 @@
   <div class="carousel">
     <Carousel />
   </div>
-  <div class="audioList">
-    <AudioList />
-    <BottomPlayer />
-  </div>
   <div class="body">
     <BodyContent />
   </div>
@@ -31,25 +27,6 @@
       Users
     </router-link>
   </section>
-  <div>
-    <section>
-      <div v-for="family in families">
-          <h5>{{ family.name }}</h5>
-      </div>
-    </section>
-    <section>
-      <div v-for="stage in stages">
-          <h5>{{ stage.name }}</h5>
-      </div>
-    </section>
-  </div>
-  <div>
-    <section class="logout">
-      <a @click.prevent="logout">
-        <span>Logout {{ loggedUser}}</span>
-      </a>
-    </section>
-  </div>
 </template>
 
 <script lang="ts">

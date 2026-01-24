@@ -21,3 +21,7 @@ export const getUsers = () => {
         })
     })
 }
+
+export const createUser = (payload: any) => {
+  return api.post('users/', payload); // RESTful POST
+};

@@ -1,4 +1,5 @@
 <template>
+    
     <Tabs>
         <Tab title="Add New User">
             <add-user-action />
@@ -7,7 +8,6 @@
             <delete-user-action />
         </Tab>
     </Tabs>
-
     <div>
         <users-overview class="users" />
     </div>
@@ -36,11 +36,11 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .users {
-    position: absolute;
-    height: 30%;
-    bottom: 20px;
-    width: 78%;
-    margin: .5rem .5rem 1rem;
-    overflow-x: scroll;
+    // position: absolute;
+    // height: 30%;
+    // bottom: 20px;
+    // width: 78%;
+    // margin: .5rem .5rem 1rem;
+    // overflow-x: scroll;
 }
 </style>
